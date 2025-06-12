@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -13,18 +14,16 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BaseInitData {
     private final PostService postService;
-    private int callCount = 0;
 
     @Bean
     ApplicationRunner baseInitDataApplicationRunner() {
         return args -> {
             work1();
             work2();
-
-            callCount++;
         };
     }
 
+    @Transactional
     void work1() {
         if (postService.count() > 0) return;
 
@@ -38,6 +37,7 @@ public class BaseInitData {
         System.out.println("기본 데이터가 초기화되었습니다.");
     }
 
+    @Transactional(readOnly = true)
     void work2() {
         Optional<Post> opPost1 = postService.findById(1);
         Post post1 = opPost1.get();
