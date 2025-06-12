@@ -1,5 +1,6 @@
 package com.back.domain.post.post.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -16,5 +17,6 @@ public class Post {
     @GeneratedValue(strategy = IDENTITY)
     private int id;
     private String title;
+    @Column(columnDefinition = "TEXT")
     private String content;
 }
