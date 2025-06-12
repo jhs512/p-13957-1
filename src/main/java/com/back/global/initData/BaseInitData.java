@@ -28,6 +28,9 @@ public class BaseInitData {
         Post post1 = postRepository.save(new Post("제목 1", "내용 1"));
         Post post2 = postRepository.save(new Post("제목 1", "내용 2"));
 
+        System.out.println(post1.getId());
+        System.out.println(post2.getId());
+
         System.out.println("기본 데이터가 초기화되었습니다.");
     }
 
