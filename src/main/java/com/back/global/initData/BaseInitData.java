@@ -34,9 +34,8 @@ public class BaseInitData {
     void work1() {
         if (postService.count() > 0) return;
 
-        Post post1 = new Post("제목 1", "내용 1");
-        postService.save(post1);
-        Post post2 = postService.save(new Post("제목 2", "내용 2"));
+        Post post1 = postService.write("제목 1", "내용 1");
+        Post post2 = postService.write("제목 2", "내용 2");
 
         System.out.println(post1.getId());
         System.out.println(post2.getId());
