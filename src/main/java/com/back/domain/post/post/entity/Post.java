@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -14,18 +14,18 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
 @ToString
+@NoArgsConstructor
 public class Post {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private int id;
-    private final String title;
+    private String title;
     @Column(columnDefinition = "TEXT")
-    private final String content;
+    private String content;
 
-    public Post() {
-        this.title = "";
-        this.content = "";
+    public Post(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 }
