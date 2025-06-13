@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@Transactional
+@Rollback
 public class PostRepositoryTest {
     @Autowired
     private PostRepository postRepository;
@@ -26,8 +28,6 @@ public class PostRepositoryTest {
 
     @Test
     @DisplayName("글 생성")
-    @Transactional
-    @Rollback
     void t2() {
         Post post = new Post("제목 new", "내용 new");
         assertThat(post.getId()).isEqualTo(0);
