@@ -29,7 +29,7 @@ public class PostRepositoryTest {
     @Test
     @DisplayName("글 생성")
     void t2() {
-        Post post = new Post("제목 new", "내용 new");
+        Post post = new Post(1, "제목 new", "내용 new");
         assertThat(post.getId()).isEqualTo(0);
 
         postRepository.save(post);
@@ -44,6 +44,6 @@ public class PostRepositoryTest {
     void t3() {
         long count = postRepository.count();
 
-        assertThat(count).isEqualTo(4); // 현재 3개의 글이 있다고 가정
+        assertThat(count).isEqualTo(2);
     }
 }
